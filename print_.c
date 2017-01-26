@@ -47,13 +47,13 @@ void	print_info(t_info *d, t_arg *f, t_width *w)
 		print_long(d, w);
 	if (d->type == 'l')
 	{
-		ft_printf("%s ", d->name);
+		ft_printf("%s", d->name);
 		if (f->o & FLAG_L)
 		{
 			if ((i = readlink(ft_strjoin(d->path, d->name), buf,
 							sizeof(buf) - 1)) != -1)
 				buf[i] = '\0';
-			ft_printf("-> %s\n", buf);
+			ft_printf(" -> %s\n", buf);
 		}
 		else
 			ft_printf("\n");

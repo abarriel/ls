@@ -61,7 +61,10 @@ char	*get_time(time_t mtime)
 	{
 		time_ = ctime(&mtime);
 		tmp = time_;
-		tmp = ft_strsub(tmp, 20, 4);
+		if (mtime > 253402297199)
+			tmp = ft_strsub(tmp, 24, 5);
+		else
+			tmp = ft_strsub(tmp, 20, 4);
 		time_ = ft_strsub(time_, 4, 7);
 		time_ = ft_strjoin_three(time_, " ", tmp);
 	}
