@@ -30,7 +30,7 @@ void	print_long(t_info *d, t_width *w)
 		w->w_size = 6;
 	}
 	else
-		ft_printf("%*ld ", w->w_size + 2, d->size);
+		ft_printf("%*ld ", w->w_size, d->size);
 	if (d->mtime_)
 		ft_printf("%s ", d->mtime_);
 }
@@ -94,7 +94,7 @@ void	print_dir(t_info *dir, t_arg *f)
 		}
 		if (!tmp->inside)
 		{
-			ft_printf("ls: ");
+			ft_putstr_fd("ls: ", 2);
 			perror(tmp->name);
 		}
 		print_dir_(f, tmp, w);

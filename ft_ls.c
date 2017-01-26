@@ -32,10 +32,12 @@ t_arg	*set_arg(int av, char **ac)
 	return (f);
 }
 
-int		main_(t_arg *f, t_info *dir)
+int		main_(t_info *fich, t_arg *f, t_info *dir)
 {
 	t_info	*new;
 
+	if (fich && dir)
+		ft_printf("\n");
 	if (f->av == -1 && dir && !(f->o & FLAG_UR))
 	{
 		ft_printf("\n");
@@ -81,6 +83,6 @@ int		main(int av, char **ac)
 	if (dir)
 		get_dir_(&dir, f);
 	print_(err, fich, f);
-	main_(f, dir);
+	main_(fich, f, dir);
 	return (0);
 }

@@ -19,6 +19,16 @@ long	ft_maxi(long s1, long s2)
 	return (s2);
 }
 
+void	width_print_(t_width *w)
+{
+	w->w_size = ft_pow(w->w_size);
+	if (w->w_size <= 1)
+		w->w_size = 3;
+	else
+		w->w_size += 2;
+	w->w_nlink = ft_pow(w->w_nlink);
+}
+
 t_width	*width_print(t_info *d, t_arg *f)
 {
 	t_info		*tmp;
@@ -41,8 +51,7 @@ t_width	*width_print(t_info *d, t_arg *f)
 		w->w_nlink = ft_maxi(w->w_nlink, tmp->next->nlink);
 		tmp = tmp->next;
 	}
-	w->w_size = ft_pow(w->w_size);
-	w->w_nlink = ft_pow(w->w_nlink);
+	width_print_(w);
 	return (w);
 }
 
@@ -77,7 +86,7 @@ void	get_dir_(t_info **dir, t_arg *f)
 
 void	get_(t_info **dir, t_info **fich, t_info **err, t_arg *f)
 {
-	if (lstat(f->ac[f->i], &f->sb) == -1)
+	if (stat(f->ac[f->i], &f->sb) == -1)
 	{
 		add_back(err, f->ac[f->i], f);
 		f->i += 1;

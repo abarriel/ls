@@ -16,8 +16,9 @@ void	ft_stop(char *ac)
 {
 	if (*ac && ac)
 	{
-		ft_printf("ls: illegal option -- %s", ac);
-		ft_printf(" usage: ls [-Ra1ltr] [file ...]\n");
+		ft_putstr_fd("ls: illegal option -- ", 2);
+		ft_putstr_fd(ac, 2);
+		ft_putstr_fd("\nusage: ls [-Ra1ltr] [file ...]\n", 2);
 	}
 	exit(1);
 }
