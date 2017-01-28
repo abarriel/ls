@@ -22,7 +22,7 @@ CFLAGS	= -Wall -Wextra -Werror -Iincludes/ -Ilibft/includes/
 
 $(NAME): $(OBJ)
 	@make -C libft
-	@gcc $(OBJ) -o $(NAME) -L libft/ -lft -Ilibft/includes/
+	@gcc $(CFLAGS) $(OBJ) -o $(NAME) -L libft/ -lft -Ilibft/includes/
 
 all: $(NAME)
 

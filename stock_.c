@@ -6,7 +6,7 @@
 /*   By: abarriel <abarriel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/14 19:07:10 by abarriel          #+#    #+#             */
-/*   Updated: 2017/01/23 15:33:26 by abarriel         ###   ########.fr       */
+/*   Updated: 2017/01/28 03:08:46 by abarriel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,6 @@ void	get_(t_info **dir, t_info **fich, t_info **err, t_arg *f)
 	if (lstat(f->ac[f->i], &f->sb) == -1)
 	{
 		add_back(err, f->ac[f->i], f);
-		f->i += 1;
-	}
-	else if (stat(f->ac[f->i], &f->sb) != -1)
-	{
-		if ((f->sb.st_mode & S_IFMT) == S_IFDIR)
-			add_back(dir, f->ac[f->i], f);
-		else
-			add_back(fich, f->ac[f->i], f);
 		f->i += 1;
 	}
 	else
