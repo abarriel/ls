@@ -38,11 +38,6 @@ int		main_(t_info *fich, t_arg *f, t_info *dir)
 
 	if (fich && dir)
 		ft_printf("\n");
-	if (f->av == -1 && dir && !(f->o & FLAG_UR))
-	{
-		ft_printf("\n");
-		f->i_tmp = 0;
-	}
 	print_dir(dir, f);
 	if (dir)
 		get_dir_(&dir, f);

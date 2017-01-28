@@ -86,9 +86,17 @@ void	get_dir_(t_info **dir, t_arg *f)
 
 void	get_(t_info **dir, t_info **fich, t_info **err, t_arg *f)
 {
-	if (stat(f->ac[f->i], &f->sb) == -1)
+	if (lstat(f->ac[f->i], &f->sb) == -1)
 	{
 		add_back(err, f->ac[f->i], f);
+		f->i += 1;
+	}
+	else if (stat(f->ac[f->i], &f->sb) != -1)
+	{
+		if ((f->sb.st_mode & S_IFMT) == S_IFDIR)
+			add_back(dir, f->ac[f->i], f);
+		else
+			add_back(fich, f->ac[f->i], f);
 		f->i += 1;
 	}
 	else
